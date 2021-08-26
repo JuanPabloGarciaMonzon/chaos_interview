@@ -1,1 +1,0 @@
-cmd_/home/discordj31416/chaos/back/modules/hostname/hostname.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/discordj31416/chaos/back/modules/hostname/hostname.ko /home/discordj31416/chaos/back/modules/hostname/hostname.o /home/discordj31416/chaos/back/modules/hostname/hostname.mod.o;  true

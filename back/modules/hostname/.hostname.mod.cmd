@@ -1,1 +1,0 @@
-cmd_/home/discordj31416/chaos/back/modules/hostname/hostname.mod := { echo  /home/discordj31416/chaos/back/modules/hostname/hostname.o;  echo; } > /home/discordj31416/chaos/back/modules/hostname/hostname.mod

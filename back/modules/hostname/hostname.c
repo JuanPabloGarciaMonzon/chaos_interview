@@ -16,7 +16,7 @@ static int writefile(struct seq_file* archivo, void *v){
     seq_printf(archivo, "Grupo 28\n");
     seq_printf(archivo, "---------------------------\n");
     seq_printf(archivo, "Uptime: %lu MB\n", inf.uptime);
-    seq_printf(archivo, "1: %d MB\n", inf.loads);
+    seq_printf(archivo, "1: %ln MB\n", inf.loads);
     return 0;
 }
 

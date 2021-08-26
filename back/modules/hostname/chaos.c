@@ -4,19 +4,17 @@
 #include <linux/mm.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("GRUPO 28");
-MODULE_DESCRIPTION("ACTIVIDAD 2");
+MODULE_AUTHOR("JUAN PABLO GARCÍA MONZÓN");
+MODULE_DESCRIPTION("CHAOS_INTERVIEW");
 MODULE_VERSION("1.0");
 
 static int writefile(struct seq_file* archivo, void *v){
     struct sysinfo inf;
     si_meminfo(&inf);
-    seq_printf(archivo, "------- ACTIVIDAD 2 -------\n");
-    seq_printf(archivo, "Sistemas operativos 2 \n");
-    seq_printf(archivo, "Grupo 28\n");
-    seq_printf(archivo, "---------------------------\n");
     seq_printf(archivo, "Uptime: %lu MB\n", inf.uptime);
-    seq_printf(archivo, "1: %lu MB\n", inf.loads);
+    seq_printf(archivo, "1: %lu MB\n", inf.loads[1]);
+    seq_printf(archivo, "5: %lu MB\n", inf.loads[2]);
+    seq_printf(archivo, "15: %lu MB\n", inf.loads[3]);
     return 0;
 }
 
@@ -30,14 +28,14 @@ static struct file_operations ops = {
 };
 
 static int load_module(void){
-    printk(KERN_INFO "hola_grupo28\n");
-    proc_create("mem_Grupo28", 0, NULL,&ops);
+    printk(KERN_INFO "Hi_chaos\n");
+    proc_create("chaos", 0, NULL,&ops);
     return 0;
 }
 
 static void unload_module(void){
-    printk(KERN_INFO "adios_grupo28\n");
-    remove_proc_entry("mem_Grupo28", NULL);
+    printk(KERN_INFO "Gby_chaos\n");
+    remove_proc_entry("chaos", NULL);
 }
 
 module_init(load_module);

@@ -18,6 +18,7 @@ static int writefile(struct seq_file* archivo, void *v){
     seq_printf(archivo, "MEMORIA LIBRE: %lu MB\n", inf.freeram * 4 / 1024);
     seq_printf(archivo, "MEMORIA EN USO: %lu MB\n", (inf.totalram * 4 / 1024) - (inf.freeram * 4 / 1024));
     seq_printf(archivo, "MEMORIA TOTAL %lu MB\n", inf.totalram * 4 / 1024);
+    seq_printf(archivo, "MEMORIA TOTAL %lu MB\n", KERN_NODENAME);
     return 0;
 }
 

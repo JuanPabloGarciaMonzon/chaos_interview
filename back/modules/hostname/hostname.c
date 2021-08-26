@@ -9,7 +9,7 @@ MODULE_DESCRIPTION("ACTIVIDAD 2");
 MODULE_VERSION("1.0");
 
 static int writefile(struct seq_file* archivo, void *v){
-    seq_printf(KERN_HOSTNAME);
+    seq_printf(KERN_NODENAME);
     return 0;
 }
 

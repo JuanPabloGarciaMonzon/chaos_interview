@@ -1,37 +1,72 @@
+// SPDX-License-Identifier: GPL-2.0
+#include <linux/fs.h>
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/mm.h>
+#include <linux/hugetlb.h>
+#include <linux/mman.h>
+#include <linux/mmzone.h>
+#include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
-#include <linux/module.h>
-#include <linux/mm.h>
+#include <linux/swap.h>
+#include <linux/vmstat.h>
+#include <linux/atomic.h>
+#include <linux/vmalloc.h>
+#include <asm/page.h>
+#include <asm/pgtable.h>
+#include <asm/uaccess.h>
 
+#define FileProc "201222615_ram"
+
+MODULE_AUTHOR("Juan Garcia");
+MODULE_DESCRIPTION("SOPES 1");
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("GRUPO 28");
-MODULE_DESCRIPTION("ACTIVIDAD 2");
-MODULE_VERSION("1.0");
 
-static int writefile(struct seq_file* archivo, void *v){
-    seq_printf(KERN_NODENAME);
+struct sysinfo i;
+
+unsigned long committed;
+unsigned long allowed;
+long cached;
+unsigned long pages[NR_LRU_LISTS];
+int lru;
+
+static int show_memory_stat(struct seq_file *f, void *v){
+    si_meminfo(&i);
+	
+    // seq_printf(f,"%lu\n",((i.freeram*100)/i.totalram));
+    seq_printf(f,"{\n");
+    seq_printf(f,"\"total\":" "%lu,\n", (i.uptime);
+
+    
+    seq_printf(f,"}\n");
     return 0;
 }
 
-static int atOpen(struct inode* inodo, struct file* file){
-    return single_open(file, writefile, NULL);
+static int meminfo_proc_open(struct inode *inode, struct file*file){
+    return single_open(file,show_memory_stat, NULL);
 }
 
-static struct file_operations ops = {
-    .open = atOpen,
-    .read = seq_read
+static const struct file_operations Meminfo_fops = {
+    .owner = THIS_MODULE,
+    .open = meminfo_proc_open,
+    .read = seq_read,
+    .llseek  = seq_lseek,
+	.release = seq_release
 };
 
-static int load_module(void){
-    printk(KERN_INFO "hola_grupo28\n");
-    proc_create("mem_Grupo28", 0, NULL, &ops);
-    return 0;
+
+static int __init start_function(void){
+    printk(KERN_INFO "Modulo RAM cargado");
+    proc_create (FileProc, 0777, NULL, &Meminfo_fops);
+	printk(KERN_INFO "Archivo Creado: /proc/%s\n",FileProc);
+	return 0;
 }
 
-static void unload_module(void){
-    printk(KERN_INFO "adios_grupo28\n");
-    remove_proc_entry("mem_Grupo28", NULL);
+static void __exit clean_function(void){
+    printk(KERN_INFO "Modulo RAM eliminado");
+    remove_proc_entry(FileProc, NULL);
 }
 
-module_init(load_module);
-module_exit(unload_module);
+module_init(start_function);
+module_exit(clean_function);

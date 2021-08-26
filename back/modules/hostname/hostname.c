@@ -1,73 +1,45 @@
-// SPDX-License-Identifier: GPL-2.0
-#include <linux/fs.h>
-#include <linux/init.h>
-#include <linux/kernel.h>
-#include <linux/mm.h>
-#include <linux/hugetlb.h>
-#include <linux/mman.h>
-#include <linux/mmzone.h>
-#include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
-#include <linux/swap.h>
-#include <linux/vmstat.h>
-#include <linux/atomic.h>
-#include <linux/vmalloc.h>
-#include <asm/page.h>
-#include <asm/pgtable.h>
-#include <asm/uaccess.h>
+#include <linux/module.h>
+#include <linux/mm.h>
 
-#define FileProc "201222615_ram"
-
-MODULE_AUTHOR("Juan Garcia");
-MODULE_DESCRIPTION("SOPES 1");
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("GRUPO 28");
+MODULE_DESCRIPTION("ACTIVIDAD 2");
+MODULE_VERSION("1.0");
 
-struct sysinfo i;
-
-unsigned long committed;
-unsigned long allowed;
-long cached;
-unsigned long pages[NR_LRU_LISTS];
-int lru;
-
-static int show_memory_stat(struct seq_file *f, void *v){
-    si_meminfo(&i);
-	
-    // seq_printf(f,"%lu\n",((i.freeram*100)/i.totalram));
-    seq_printf(f,"{\n");
-    seq_printf(f,"\"total\":" "%lu,\n", ((i.totalram) << (PAGE_SHIFT -10))/1024 );
-    seq_printf(f,"\"free\":" "%lu,\n",( (i.freeram) << (PAGE_SHIFT -10) ) /1024);
-    seq_printf(f,"\"used\":" "%lu,\n",(  ( ( ( (i.totalram) << (PAGE_SHIFT -10) )  -  ( (i.freeram) << (PAGE_SHIFT -10) ) )*4) /1024 ) );
-    seq_printf(f,"\"percent\":" "%lu\n",(  (( ( ( (i.totalram) << (PAGE_SHIFT -10) )  -  ( (i.freeram) << (PAGE_SHIFT -10) ) )*4) /1024 )/100 ));
-    
-    seq_printf(f,"}\n");
+static int writefile(struct seq_file* archivo, void *v){
+    struct sysinfo inf;
+    si_meminfo(&inf);
+    seq_printf(archivo, "------- ACTIVIDAD 2 -------\n");
+    seq_printf(archivo, "Sistemas operativos 2 \n");
+    seq_printf(archivo, "Grupo 28\n");
+    seq_printf(archivo, "---------------------------\n");
+    seq_printf(archivo, "MEMORIA LIBRE: %lu MB\n", inf.freeram * 4 / 1024);
+    seq_printf(archivo, "MEMORIA EN USO: %lu MB\n", (inf.totalram * 4 / 1024) - (inf.freeram * 4 / 1024));
+    seq_printf(archivo, "MEMORIA TOTAL %lu MB\n", inf.totalram * 4 / 1024);
     return 0;
 }
 
-static int meminfo_proc_open(struct inode *inode, struct file*file){
-    return single_open(file,show_memory_stat, NULL);
+static int atOpen(struct inode* inodo, struct file* file){
+    return single_open(file, writefile, NULL);
 }
 
-static const struct file_operations Meminfo_fops = {
-    .owner = THIS_MODULE,
-    .open = meminfo_proc_open,
-    .read = seq_read,
-    .llseek  = seq_lseek,
-	.release = seq_release
+static struct file_operations ops = {
+    .open = atOpen,
+    .read = seq_read
 };
 
-
-static int __init start_function(void){
-    printk(KERN_INFO "Modulo RAM cargado");
-	printk(KERN_INFO "Archivo Creado: /proc/%s\n",FileProc);
-	return 0;
+static int load_module(void){
+    printk(KERN_INFO "hola_grupo28\n");
+    proc_create("mem_Grupo28", 0, NULL, &ops);
+    return 0;
 }
 
-static void __exit clean_function(void){
-    printk(KERN_INFO "Modulo RAM eliminado");
-    remove_proc_entry(FileProc, NULL);
+static void unload_module(void){
+    printk(KERN_INFO "adios_grupo28\n");
+    remove_proc_entry("mem_Grupo28", NULL);
 }
 
-module_init(start_function);
-module_exit(clean_function);
+module_init(load_module);
+module_exit(unload_module);

@@ -32,7 +32,7 @@ static struct file_operations ops = {
 
 static int load_module(void){
     printk(KERN_INFO "hola_grupo28\n");
-    proc_create("mem_Grupo28", 0, NULL, &ops);
+    proc_create("mem_Grupo28", 0, NULL);
     return 0;
 }
 

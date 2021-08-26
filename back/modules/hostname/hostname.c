@@ -60,7 +60,6 @@ static const struct file_operations Meminfo_fops = {
 
 static int __init start_function(void){
     printk(KERN_INFO "Modulo RAM cargado");
-    proc_create (FileProc, 0777, NULL, &Meminfo_fops);
 	printk(KERN_INFO "Archivo Creado: /proc/%s\n",FileProc);
 	return 0;
 }

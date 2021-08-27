@@ -1,14 +1,18 @@
+import json
 def get_uptime():
+    uptime = []
     with open('/proc/uptime', 'r') as f:
         uptime_seconds = float(f.readline().split()[0])
 
-    return uptime_seconds
+    uptime.append(uptime_seconds)
+    return uptime
 
 def get_hostname():
+    host = []
     with open('/proc/sys/kernel/hostname', 'r') as f:
         hostname = str(f.readline())
-
-    return hostname
+    host.append(hostname)
+    return host
 
 def get_loadavg():
     load = []
@@ -19,7 +23,3 @@ def get_loadavg():
     load.append(float(load1.split()[1]))
     load.append(float(load1.split()[2]))
     return load
-
-print(get_uptime())
-print(get_hostname())
-print(get_loadavg())

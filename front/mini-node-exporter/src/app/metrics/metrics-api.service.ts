@@ -13,22 +13,23 @@ export class MetricsApiService {
   // GET list of public, future events
   getHost(): Observable<Metrics[]> {
     return <Observable<Metrics[]>> this.http
-      .get(`${API_URL}/host`);
+      .get(`${API_URL}/info/host`);
      
   }
 
     // GET list of public, future events
     getUptime(): Observable<Metrics[]> {
       return <Observable<Metrics[]>> this.http
-        .get(`${API_URL}/uptime`);
+        .get(`${API_URL}/info/uptime`);
              
     }
 
   // GET list of public, future events
   getLoad(): Observable<Metrics[]> {
     return <Observable<Metrics[]>> this.http
-      .get(`${API_URL}/load`);      
+      .get(`${API_URL}/info/load`);      
   }
+
 
 
 }

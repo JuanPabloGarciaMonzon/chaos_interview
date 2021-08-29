@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   host: Metrics[] = [];
   uptime: Metrics[] = [];
   loadavg: Metrics[] = [];
-
+  pro: Metrics[] = [];
   constructor(private metricsApi: MetricsApiService) {
   }
 
@@ -38,13 +38,15 @@ export class AppComponent implements OnInit, OnDestroy  {
           },
           console.error);
 
-    this.metricsListSubs = this.metricsApi.getLoad().subscribe(res => {
-      console.log(res);  
-      this.loadavg = res;
-      return this.loadavg
-        
-      },
-      console.error);
+          this.metricsListSubs = this.metricsApi.getLoad().subscribe(res => {
+            console.log(res);  
+            this.loadavg = res;
+            return this.loadavg
+              
+            },
+            console.error);
+
+
   }
 
   ngOnDestroy() {

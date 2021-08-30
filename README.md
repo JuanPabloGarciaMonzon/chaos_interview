@@ -1,10 +1,59 @@
-# Chaos Interview
-A repository with the 2 goals and bonuses specified in the LFX - Chaos Mesh practical interview.
 
-Frontend Framework used:
-- Angular
+![Image and Preview Themes on the toolbar](https://repository-images.githubusercontent.com/206213815/9f272c80-e786-11ea-99db-65a071dd83ec) 
 
-Backend:
-I set the server, made in Flask, in a Google Cloud Instance. In order to mantain the URL of the API running without problems.
+![Image and Preview Themes on the toolbar](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFYNjfqzX8R4mlKur-K_NLR5BPxKX6gkf7rvbR8mQ4Cv8Fw-M3wgdgbYIL2KCGesyelvM&usqp=CAU)   
+# Chaos Mesh Interview
+The purpose of this repository is to be presented as an interview for the mentorship program of Chaos Mesh on LFX Mentorship 2021 fall. 
+
+<u>In this project were used some technologies like:</u> 
+* Prometheus 
+* Grafana
+* Docker
+* Docker Compose 
+
+<u>In the backend the tools used were:</u>
+* A server created on Python Flask.
+
+* A .sh file with a script to make request to the endpoints of the server. 
+
+<u>The main flow of the application is like this:</u>
+* First we need to clone, or download the code from the repository
+* We travel to the main folder and we run the "docker-compose" file.
+    * **sudo docker-compose up**
+
+***<small>This will make run the whole application. (Flask Server, Prometheus, Grafana and Grafana Dashboard).</small>***
+
+* Then we change directory to the "back" folder and run the "test.sh" file, with the command
+
+    * **/bin/bash test.sh**
+
+***<small>This will run a while loop that will call to the 3 main endpoints (/info/host/, /info/uptime and /info/load).</small>***
+
+* Then after preparing the enviroment, we use our favorite browser and type the next URLs, and, depending on our host, will be displayed different information:
+* [http://localhost:23333/info/host](http://localhost:23333/info/host) (endpoint)
+
+* [http://localhost:23333/info/uptime](http://localhost:23333/info/uptime) (endpoint)
+
+* [http://localhost:23333/info/load](http://localhost:23333/info/load) (endpoint)
+* [http://localhost:23333/metrics](http://localhost:23333/metrics) (endpoint)
+* [http://localhost:3000](http://localhost:3000 (Grafana)) (Grafana)
+
+In Grafana we will have created alredy, thanks to the grafana-dashboard service deployed in docker-compose, the panels and the connection to the Prometheus Data Source, we only have to travel to the Dashboards manage page and we will watch the behavior of the request of the two endpoints that can be measured, "Uptime" and "Load Avg".
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1bskHteK8csH04YejXnAxvXBLaGxiTB44/view?usp=sharing)  
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1jVyjXvKFW3J6l1QLph67T70bxTdUQzIG/view?usp=sharing) 
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1bTLKwIlK1oid__nQv94KFDYmuq0u133_/view?usp=sharing) 
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1DnQ6d3t1DzaLwWInF1KO5SIYcH1BEFXX/view?usp=sharing) 
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1Y61O83sn-el3-5UmxPDjtDao-CepDdz8/view?usp=sharing) 
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1RHPucwjBaLwZVSUlJWh9nx98uAtT7rfu/view?usp=sharing) 
+
+![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1FBdf8oJ1UdrZ1wauFqpnwZU7kFmM8j2_/view?usp=sharing) 
+
+This is in a nutshell the flow of the application, i hope I can keep working with I have learn a lot, thanks for this opportunity. 
 
 Juan Pablo García Monzón (@JuanPabloGarc48)

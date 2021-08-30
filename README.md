@@ -40,19 +40,6 @@ The purpose of this repository is to be presented as an interview for the mentor
 
 In Grafana we will have created alredy, thanks to the grafana-dashboard service deployed in docker-compose, the panels and the connection to the Prometheus Data Source, we only have to travel to the Dashboards manage page and we will watch the behavior of the request of the two endpoints that can be measured, "Uptime" and "Load Avg".
 
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1bskHteK8csH04YejXnAxvXBLaGxiTB44/view?usp=sharing)  
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1jVyjXvKFW3J6l1QLph67T70bxTdUQzIG/view?usp=sharing) 
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1bTLKwIlK1oid__nQv94KFDYmuq0u133_/view?usp=sharing) 
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1DnQ6d3t1DzaLwWInF1KO5SIYcH1BEFXX/view?usp=sharing) 
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1Y61O83sn-el3-5UmxPDjtDao-CepDdz8/view?usp=sharing) 
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1RHPucwjBaLwZVSUlJWh9nx98uAtT7rfu/view?usp=sharing) 
-
-![Image and Preview Themes on the toolbar](https://drive.google.com/file/d/1FBdf8oJ1UdrZ1wauFqpnwZU7kFmM8j2_/view?usp=sharing) 
 
 This is in a nutshell the flow of the application, i hope I can keep working with I have learn a lot, thanks for this opportunity. 
 

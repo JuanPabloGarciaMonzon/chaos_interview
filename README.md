@@ -5,6 +5,7 @@
 # Chaos Mesh Interview
 The purpose of this repository is to be presented as an interview for the mentorship program of Chaos Mesh on LFX Mentorship 2021 fall. 
 
+
 <u>In this project were used some technologies like:</u> 
 * Prometheus 
 * Grafana
@@ -42,5 +43,7 @@ In Grafana we will have created alredy, thanks to the grafana-dashboard service 
 
 
 This is in a nutshell the flow of the application, i hope I can keep working with I have learn a lot, thanks for this opportunity. 
+
+***<small>The whole project was created using WSL2 and a Ubuntu 20.0.4 Distro..</small>***
 
 Juan Pablo García Monzón (@JuanPabloGarc48)

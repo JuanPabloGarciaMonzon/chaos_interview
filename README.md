@@ -46,4 +46,7 @@ This is in a nutshell the flow of the application, i hope I can keep working wit
 
 ***<small>The whole project was created using WSL2 and a Ubuntu 20.0.4 Distro..</small>***
 
+# Video Explaining the main flow of the application
+* [https://youtu.be/k7_QgtLAE6s](http://localhost:3000 (Grafana)) (Grafana)
+
 Juan Pablo García Monzón (@JuanPabloGarc48)

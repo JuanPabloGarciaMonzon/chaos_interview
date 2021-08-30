@@ -1,14 +1,12 @@
+import proc_modules
 from flask.json import jsonify
 from flask.wrappers import Response
 from prometheus_client.exposition import generate_latest
-import proc_modules
 from prometheus_client import Gauge
 from flask import Flask, request
-from flask_cors import CORS
 
-procs = proc_modules
+procs = proc_modules #PROC_MODULES INSTANCE
 app = Flask(__name__)
-CORS(app)
 
 #PROMETHEUS VARIABLES
 gl = Gauge('node_load','load average of number of jobs in the run queue',['duration'])
@@ -21,9 +19,7 @@ def host():
     if request.method == "GET":
         try:
             host = procs.get_hostname()
-            h = []
-            h.append(host)
-            return jsonify(h)
+            return host
         except Exception as e:
             return str(e)
 
@@ -33,9 +29,7 @@ def uptime():
         try:
             uptime = procs.get_uptime()
             gu.set(uptime)
-            up = []
-            up.append(uptime)
-            return jsonify(up)
+            return uptime
         except Exception as e:
             return str(e)
 
@@ -50,7 +44,7 @@ def load():
             gl.labels(duration="1m").set(l[0])
             gl.labels(duration="5m").set(l[1])
             gl.labels(duration="15m").set(l[2])
-            return jsonify(l)
+            return jsonify(load)
         except Exception as e:
             return str(e)
 #METRIC METHOD
@@ -62,6 +56,6 @@ def metrics():
             return Response([generate_latest(gl),generate_latest(gu)],mimetype= "text/plain")
         except Exception as e:
             return str(e)
-
+#----------------------------------------------------------------------------------            
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",port=23333)

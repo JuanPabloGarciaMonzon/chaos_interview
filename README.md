@@ -1,5 +1,5 @@
 
-![Image and Preview Themes on the toolbar](https://repository-images.githubusercontent.com/206213815/9f272c80-e786-11ea-99db-65a071dd83ec) 
+![Image and Preview Themes on the toolbar](https://cdn-images-1.medium.com/fit/t/1600/480/0*W_0hjvwqxUuWvosc) 
 
 ![Image and Preview Themes on the toolbar](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFYNjfqzX8R4mlKur-K_NLR5BPxKX6gkf7rvbR8mQ4Cv8Fw-M3wgdgbYIL2KCGesyelvM&usqp=CAU)   
 # Chaos Mesh Interview
@@ -46,7 +46,11 @@ This is in a nutshell the flow of the application, i hope I can keep working wit
 
 ***<small>The whole project was created using WSL2 and a Ubuntu 20.0.4 Distro..</small>***
 
+<<<<<<< HEAD
 # Video Explaining the main flow of the application
 * [https://youtu.be/k7_QgtLAE6s](http://localhost:3000 (Grafana)) (Grafana)
 
 Juan Pablo García Monzón (@JuanPabloGarc48)
+=======
+Juan Pablo García Monzón (@JuanPabloGarc48)
+>>>>>>> 97b5fbc5c48ac7fd8e445a68041ed909aca56111

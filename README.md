@@ -1,5 +1,5 @@
 
-![Image and Preview Themes on the toolbar](https://repository-images.githubusercontent.com/206213815/9f272c80-e786-11ea-99db-65a071dd83ec) 
+![Image and Preview Themes on the toolbar](https://cdn-images-1.medium.com/fit/t/1600/480/0*W_0hjvwqxUuWvosc) 
 
 ![Image and Preview Themes on the toolbar](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFYNjfqzX8R4mlKur-K_NLR5BPxKX6gkf7rvbR8mQ4Cv8Fw-M3wgdgbYIL2KCGesyelvM&usqp=CAU)   
 # Chaos Mesh Interview
